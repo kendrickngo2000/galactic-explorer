@@ -3,7 +3,7 @@ import pygame
 NEIGHBOR_OFFSET = [(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)]
 PHYSICS_TILES = {'grass', 'stone'}
 
-class TileMap: 
+class Tilemap: 
     def __init__(self, game, tile_size=16):
         self.game = game
         self.tile_size = tile_size
@@ -32,12 +32,16 @@ class TileMap:
         return rects
 
 
-    def render(self, surf, offset=0):
+    def render(self, surf, offset=(0, 0)):
         for tile in self.offgrid_tiles:
-            self.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'][0] - offset[0], tile['pos'][1] -offset[1])
-        
-        for loc in self.tilemap:
-            tile = self.tilemap[loc]
-            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tile_size - offset[0], tile['pos'][1] * self.tile_size - offset[1]))
+            self.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'][0] - offset[0], tile['pos'][1] - offset[1])
+            
+        # top left tile position
+        for x in range(offset[0] // self.tile_size, (offset[0] + surf.get_width()) // self.tile_size + 1):
+            for y in range(offset[1] // self.tile_size, (offset[1] + surf.get_height()) // self.tile_size + 1):
+                loc = str(x) + ';' + str(y)
+                if loc in self.tilemap:
+                    tile = self.tilemap[loc]
+                    surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tile_size - offset[0], tile['pos'][1] * self.tile_size - offset[1]))
 
            
