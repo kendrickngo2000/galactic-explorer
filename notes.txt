@@ -38,10 +38,4 @@ Run `python3 game.py`
 - Primitive approaches (0 and 1 to represent air/ground).
 - Using JSON (although JSON has no support for tuples).
 - Save and load functions done! Able to load into the created map.
-
-### References
-- https://opensource.com/article/19/12/jumping-python-platformer-game
-- https://www.youtube.com/channel/UCYNrBrBOgTfHswcz2DdZQFA
-- https://www.youtube.com/playlist?list=PLsk-HSGFjnaG-BwZkuAOcVwWldfCLu1pq
-- https://www.youtube.com/watch?v=2gABYM5M0ww&t=9482s
-
+github 
