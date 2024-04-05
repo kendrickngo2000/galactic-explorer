@@ -37,12 +37,14 @@ class Game:
 
         self.player = Player(self, (50, 50), (8, 15)) 
         self.tilemap = Tilemap(self, tile_size=16)
+        self.tilemap.load('map.json')
 
         self.scroll = [0, 0]
 
     def run(self): 
         while True:
-            self.display.blit(self.assets['background'], (0, 0))
+            # self.display.blit(self.assets['background'], (0, 0))
+            self.display.fill((75, 0, 130))
 
             # camera
             self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 2 - self.scroll[0])

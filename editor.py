@@ -14,7 +14,6 @@ class Editor:
         self.display = pygame.Surface((320, 240))
         self.clock = pygame.time.Clock()
 
-
         self.assets = {
             'decor': load_images('tiles/decor'),
             'grass': load_images('tiles/grass'),
@@ -25,6 +24,12 @@ class Editor:
         self.movement = [False, False, False, False]
         
         self.tilemap = Tilemap(self, tile_size=16)
+
+        # load function 
+        try:
+            self.tilemap.load('map.json')
+        except FileNotFoundError:
+            pass
 
         self.scroll = [0, 0]    # camera
 
@@ -122,7 +127,11 @@ class Editor:
                     if event.key == pygame.K_s:
                         self.movement[3] = True
                     if event.key == pygame.K_g:
-                        self.ongrid = not self.ongrid 
+                        self.ongrid = not self.ongrid
+                    if event.key ==pygame.K_t:          # autotile on t
+                        self.tilemap.autotile() 
+                    if event.key == pygame.K_o:
+                        self.tilemap.save('map.json')   # save map using o
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
                 if event.type == pygame.KEYUP:
