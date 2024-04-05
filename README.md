@@ -1,5 +1,6 @@
-# Map Editor
+# Galactic Explorer
 
+## Map Editor
 To edit a map, run `python3 editor.py`
 
 - Use WASD keys to move the camera.
@@ -10,14 +11,12 @@ To edit a map, run `python3 editor.py`
 - Press 'o' to save the map.
 
 ## Play Game!
-
 Run `python3 game.py`
 
 - Use WASD to move.
 - Explore your map!
 
 ## Progress and Notes
-
 ### Scene
 - Background image and player loaded.
 - Clouds animation looped, done! (these clouds were references, adjust art accordingly).
